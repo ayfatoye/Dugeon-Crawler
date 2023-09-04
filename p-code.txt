@@ -1,0 +1,125 @@
+procedure: createMap
+    input: two integers maxRow and maxCol
+    output: 
+        - it returns a dynamically allocated 2D array 
+        - remember to think of char** as just a 2D array rather than a double pointer, at least for this homework
+        - 
+
+procedure: deleteMap
+    
+    input: 
+        - the dynamically allocated map (created by createMap)
+        - the maxRow of the map
+
+    output:
+        - it deallocates the dynamically allocated map
+
+    body:
+        -
+
+
+procedure: getDirection
+
+    input: 
+        - a character representing a player'S input
+        - two integer refrences representing the player's nextRow and nextCol
+
+    output: 
+        - updates the player's nextRow and nextCol depending on the input 
+
+    body:
+        - 
+
+procedure: doPlayerMove
+
+    input: char** map, int maxRow, int maxCol, Player& player, int nextRow, int nextCol
+    
+    output: 
+        - moves the player to the specified spot if the move is valid, i.e it updates the map with the player's new position
+        - returns the player's status e.g(if the player stays still, you return STATUS_STAY)
+
+
+    body:
+        - first: check if the move is possible 
+
+            - if the nextRow > maxRow return STATUS_STAY
+            - if the nextCol > maxCol return STATUS_STAY
+
+            - if map[nextRow][nextCol] is '+' then return STATUS_STAY
+
+            - if map[nextRow][nextCol] is '!' '?' then return STATUS_ESCAPE STATUS_LEAVE
+
+            - if map[nextRow][nextCol] is: 
+
+                - if is '@' then return STATUS_AMULET
+
+                - if is '$' than return STATUS_TREASURE
+
+            else
+                set player.row = nextRow
+                set player.col = nextCol
+                
+                return STATUS_MOVE
+
+
+procedure: loadLevel
+
+    input: const string& fileName, int& maxRow, int& maxCol, Player& playe
+
+    output:
+        - a 2D map, with it's elements correspoding with the map in the input text file
+        - returns a 2D dynamically allocated map or nullptr if something doesn't work
+
+
+    procedure: 
+        - make a file stream using fileName
+
+        (in resize) - you can't resize a nullptr and you can't resize when maxRow or maxC
+        - inFS >> maxRow(int);
+        - inFS >> maxCol(int);
+        - inFS >> player.row(int);
+        - inFS >> player.col(int);
+
+        - 
+
+procedure: resizeMap()
+
+    input:
+        - char** map, int& maxRow, int& maxCol
+
+    output: 
+        - returns a char** map double the size of the inputted map
+
+    body:
+
+        - first just copying content across the direct bottom 
+
+            - create another map using creatMap with a maxCol twice the size of the current maxCol, name it map2
+            - 
+
+procedure: doMonsterAttack()
+
+    input: 
+        - char** map, int maxRow, int maxCol, const Player& player
+
+    output:
+        - move monster towards player by one tile if eligible
+
+    body:
+
+        - 
+
+
+
+
+
+
+Questions I have:
+
+    - why isn't mimir giving me points for deleteMap, can you(Taele, or another PT) look at my deleteMap?
+    
+    - if we won't be inputting any instance of the player struct into getDirection, how do we change the player's 
+      nextRow and nextCol? 
+
+    3. in doPlayerMove(): 
+        - check in code questions (just search your code for 'q')
